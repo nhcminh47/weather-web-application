@@ -1,8 +1,9 @@
 import { useAppDispatch } from '@store/hook'
-import { useLazyGetLocationsByQueryQuery, type LocationOption } from '@store/services/locationApi'
+import { useLazyGetLocationsByQueryQuery } from '@store/services/locationApi'
 import { setLocationData } from '@store/slices/home'
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import type { LocationApiResponse } from 'types/weather'
 
 const SearchBox: React.FC = () => {
   const inputRef = useRef(null)
@@ -12,7 +13,7 @@ const SearchBox: React.FC = () => {
   const handleSearch = () => {
     const { value } = inputRef.current!
     if (value === '') return
-    trigger(value)
+    trigger({ query: value })
   }
   useEffect(() => {
     if (result && result.data && result.data.length > 0) {
@@ -21,7 +22,7 @@ const SearchBox: React.FC = () => {
       navigate('/')
     }
   }, [result])
-  const saveHistory = (newLocation: LocationOption) => {
+  const saveHistory = (newLocation: LocationApiResponse) => {
     const storedData = localStorage.getItem('searchHistory')
     const history = storedData ? JSON.parse(storedData) : []
     history.push(newLocation)
@@ -36,10 +37,7 @@ const SearchBox: React.FC = () => {
           placeholder='Search country or city here...'
           ref={inputRef}
         />
-        <button
-          className='searchbox__content--btn'
-          onClick={handleSearch}
-        >
+        <button className='searchbox__content--btn' onClick={handleSearch}>
           Search
         </button>
         {result.data?.length === 0 && <p className='searchbox__content--errMsg'>Invalid country or city</p>}

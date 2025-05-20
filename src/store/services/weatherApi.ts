@@ -1,16 +1,15 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { WeatherApiResponse, WeatherData } from './types';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import type { WeatherApiResponse, WeatherData } from '../../types/weather'
 
-const OPENWEATHER_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
-const OPENWEATHER_API_BASE_URL = import.meta.env.VITE_OPENWEATHER_API_BASE_URL;
+const OPENWEATHER_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY
+const OPENWEATHER_API_BASE_URL = import.meta.env.VITE_OPENWEATHER_API_BASE_URL
 
 export const weatherApi = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fetchBaseQuery({ baseUrl: OPENWEATHER_API_BASE_URL }),
   endpoints: (builder) => ({
     getWeatherByCoords: builder.query<WeatherData, { lat: number; lon: number }>({
-      query: ({ lat, lon }) => 
-        `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${OPENWEATHER_API_KEY}`,
+      query: ({ lat, lon }) => `/weather?lat=${lat}&lon=${lon}&units=metric&appid=${OPENWEATHER_API_KEY}`,
       transformResponse: (response: WeatherApiResponse): WeatherData => ({
         temperature: response.main.temp,
         feelsLike: response.main.feels_like,
@@ -28,14 +27,14 @@ export const weatherApi = createApi({
           lat: response.coord.lat,
           lon: response.coord.lon,
           city: response.name,
-          country: response.sys.country,
+          country: response.sys.country
         },
         timestamp: response.dt,
         sunrise: response.sys.sunrise,
-        sunset: response.sys.sunset,
-      }),
-    }),
-  }),
-});
+        sunset: response.sys.sunset
+      })
+    })
+  })
+})
 
-export const { useGetWeatherByCoordsQuery, useLazyGetWeatherByCoordsQuery } = weatherApi;
+export const { useGetWeatherByCoordsQuery, useLazyGetWeatherByCoordsQuery } = weatherApi

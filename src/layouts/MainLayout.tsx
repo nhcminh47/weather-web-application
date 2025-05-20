@@ -1,6 +1,7 @@
 import Header from '@components/Header'
 import LoadingSpinner from '@components/LoadingSpinner'
 import useDeviceLocation from '@hooks/useDeviceLocation'
+import { useFetchWeather } from '@hooks/useFetchWeather'
 import { useAppDispatch } from '@store/hook'
 import { useLazyGetLocationsByQueryQuery } from '@store/services/locationApi'
 import { setLocationData } from '@store/slices/home'
@@ -11,30 +12,20 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const dispatch = useAppDispatch()
   const [trigger] = useLazyGetLocationsByQueryQuery()
+
   useEffect(() => {
     fetchLocation(true)
   }, [fetchLocation])
 
-  useEffect(() => {
-    if (location) {
-      getLocationFromApi()
-    }
-  }, [location?.lat, location?.lon])
-
-  const getLocationFromApi = async () => {
-    try {
-      if (!location) return
-      const data = await trigger(location).unwrap()
-      if (data) {
-        setIsLoading(true)
-        dispatch(setLocationData(data?.[0]))
-      }
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  useFetchWeather({
+    location,
+    fetchFn: (coords) => trigger({ query: coords }).unwrap(),
+    onSuccess: (data) => {
+      setIsLoading(true)
+      dispatch(setLocationData(data?.[0]))
+    },
+    onLoaded: () => setIsLoading(false)
+  })
 
   const handleRetry = () => {
     fetchLocation(false)
@@ -54,13 +45,13 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <>
-    {isLoading && <LoadingSpinner />}
-    <div className='main__wrapper'>
-      <div className='main__header'>
-        <Header />
+      {isLoading && <LoadingSpinner />}
+      <div className='main__wrapper'>
+        <div className='main__header'>
+          <Header />
+        </div>
+        <div className='main__body'>{children}</div>
       </div>
-      <div className='main__body'>{children}</div>
-    </div>
     </>
   )
 }

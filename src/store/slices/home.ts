@@ -1,17 +1,16 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import type { LocationOption } from '@store/services/locationApi'
-import type { ForecastData, WeatherData } from '@store/services/types'
+import type { ForecastData, LocationApiResponse, WeatherData } from 'types/weather'
 
 interface Home {
   data: WeatherData | null
   forecast: Record<string, ForecastData[]> | null
-  location: LocationOption | null
+  location: LocationApiResponse | null
 }
 
 const initialState: Home = {
   data: null,
   forecast: null,
-  location: null,
+  location: null
 }
 
 const homeSlice = createSlice({
@@ -26,8 +25,8 @@ const homeSlice = createSlice({
     },
     setLocationData: (state, action: PayloadAction<Home['location']>) => {
       state.location = structuredClone(action.payload)
-    },
-  },
+    }
+  }
 })
 
 export const { setWeatherData, setForecastData, setLocationData } = homeSlice.actions
