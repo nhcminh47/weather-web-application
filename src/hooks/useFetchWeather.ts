@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react'
+import { toast } from 'react-toastify'
 
 type FetchFunction<T> = (coords: { lat: number; lon: number }) => Promise<T>
 type DispatchFunction<T> = (data: T) => void
@@ -22,6 +23,7 @@ export function useFetchWeather<T>({ location, fetchFn, onSuccess, onLoaded }: U
       onSuccess(result)
     } catch (error) {
       console.error('Failed to fetch data', error)
+      toast.error('Failed to fetch data')
     } finally {
       onLoaded?.()
     }
