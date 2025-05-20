@@ -1,0 +1,25 @@
+// Colors
+$color-primary: #3498db;
+$color-secondary: #2ecc71;
+$color-danger: #e74c3c;
+$color-subtext: #aaa;
+$border-color: #cecece;
+$main-background-color: #eff3fc;
+$box-shadow: #0000001a;
+$color-focus: #007bff;
+// Typography
+$font-main: 'Roboto', sans-serif;
+$font-heading: 'Georgia', serif;
+$text-primary: #000;
+// Spacing
+$spacing-unit: 8px;
+$spacing-sm: $spacing-unit * 2;
+$spacing-md: $spacing-unit * 4;
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+// Others
+$transition-standard: 0.2s ease;
+$border-radius-standard: 8px;
+$border-standard: 1px solid $border-color;
+$box-shadow-dropdown: 0 10px 30px rgba(0, 0, 0, 0.08);

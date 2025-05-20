@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as *;
+.card {
+  border-radius: 12px;
+  box-shadow: 1px 1px 6px $box-shadow;
+  overflow: hidden;
+  width: 100%;
+  background-color: white;
+  &__header {
+    padding: $spacing-md;
+    background: $color-secondary;
+    color: white;
+  }
+  
+  &__body {
+    padding: $spacing-md;
+  }
+}

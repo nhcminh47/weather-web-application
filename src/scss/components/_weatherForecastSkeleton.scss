@@ -1,0 +1,30 @@
+@use '../abstracts/skeleton' as *;
+@use '../abstracts/functions' as *;
+
+.weatherForecast__wrapper {
+  padding: rem(16px);
+}
+
+.skeleton-date {
+  @include skeleton-base(20px, 100px);
+  margin: rem(10px) 0;
+}
+
+.skeleton-timeline {
+  display: flex;
+  gap: rem(12px);
+  align-items: center;
+  padding: rem(8px) 0;
+}
+
+.skeleton-time {
+  @include skeleton-base(14px, 40px);
+}
+
+.skeleton-temp {
+  @include skeleton-base(30px, 80px);
+}
+
+.skeleton-desc {
+  @include skeleton-base(16px, 100px);
+}

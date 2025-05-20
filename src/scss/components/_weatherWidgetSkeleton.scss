@@ -1,0 +1,35 @@
+@use '../abstracts/skeleton' as *;
+@use '../abstracts/functions' as *;
+
+.skeleton-date {
+  @include skeleton-base(20px, 150px);
+  margin: rem(16px) 0;
+}
+
+.skeleton-icon {
+  @extend %base-skeleton;
+  height: rem(80px);
+  width: rem(80px);
+  border-radius: 50%;
+  margin: 0 rem(16px) rem(16px) rem(32px);
+}
+
+.skeleton-temp {
+  @include skeleton-base(28px, 100px);
+  margin-bottom: rem(6px);
+}
+
+.skeleton-status {
+  @include skeleton-base(16px, 80px);
+}
+
+.skeleton-label {
+  @include skeleton-base(14px, 60px);
+  display: inline-block;
+  margin-bottom: rem(4px);
+}
+
+.skeleton-value {
+  @include skeleton-base(18px, 100px);
+  display: inline-block;
+}

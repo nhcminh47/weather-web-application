@@ -1,0 +1,49 @@
+@use 'variables' as *;
+@use 'functions' as *;
+// Responsive breakpoint manager
+@mixin respond-to($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Flexbox center mixin
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flexbox between mixin
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin input-focus {
+  border-color: $color-primary;
+  outline: none;
+  box-shadow: 0 0 0 rem(3px) rgba($color-primary, 0.15);
+}
+
+@mixin card-container {
+  background-color: white;
+  border-radius: rem(8px);
+  box-shadow: 0 rem(2px) rem(8px) rgba(0, 0, 0, 0.1);
+  padding: $spacing-md;
+  margin-bottom: $spacing-md;
+}
+
+@mixin section-title {
+  margin: rem(16px) 0;
+  font-weight: bold;
+}
+
+@mixin absolute-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

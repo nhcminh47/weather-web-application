@@ -1,0 +1,30 @@
+// abstracts/_skeleton.scss
+
+@use 'variables' as *;
+@use 'functions' as *;
+
+@mixin skeleton-base($height, $width) {
+  height: rem($height);
+  width: rem($width);
+  border-radius: $border-radius-standard;
+  background: linear-gradient(90deg, #eee 25%, #ddd 37%, #eee 63%);
+  background-size: 400% 100%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+// Optional placeholder selector
+%base-skeleton {
+  border-radius: $border-radius-standard;
+  background: linear-gradient(90deg, #eee 25%, #ddd 37%, #eee 63%);
+  background-size: 400% 100%;
+  animation: pulse 1.2s ease-in-out infinite;
+}

@@ -1,0 +1,9 @@
+// Convert pixels to rem
+@function rem($pixels) {
+  @return ($pixels / 16px) * 1rem;
+}
+
+// Color shade generator
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}

@@ -1,0 +1,24 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+.historybox {
+  &__title {
+    @include section-title;
+  }
+  &__wrapper {
+    padding: 0 24px;
+  }
+  &__item {
+    list-style: none;
+    margin-bottom: 16px;
+    &--detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .icon {
+        display: flex;
+        gap: 20px;
+      }
+    }
+  }
+}

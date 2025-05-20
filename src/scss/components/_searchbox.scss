@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+.searchbox {
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem(10px);
+    position: relative;
+    padding-bottom: rem(24px);
+    
+    &--input {
+      border: $border-standard;
+      width: 100%;
+      border-radius: rem(6px);
+      padding: rem(9.6px) rem(16px);
+      font-size: rem(12px);
+      outline: none;
+      transition: border-color $transition-standard, box-shadow $transition-standard;
+
+      &:focus {
+        @include input-focus;
+      }
+    }
+    
+    &--btn {
+      width: rem(80px);
+      color: white;
+      padding: rem(8px) 0;
+      background-color: $color-primary;
+      border-radius: rem(4px);
+    }
+    
+    &--errMsg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: rem(12px);
+      margin: 0;
+      color: $color-danger;
+    }
+  }
+}
+

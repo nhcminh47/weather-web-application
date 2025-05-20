@@ -1,0 +1,46 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+@use '../abstracts/mixins' as *;
+.weatherForecast {
+  &__title {
+    @include section-title;
+  }
+  
+  &__wrapper {
+    padding: 0 rem(24px);
+  }
+  
+  &__daily {
+    &--date {
+      color: $color-subtext;
+      margin: rem(24px) 0;
+    }
+    
+    &--timeline {
+      @include flex-center;
+      gap: rem(15px);
+      font-size: rem(12px);
+      
+      .time {
+        font-weight: bold;
+        font-size: rem(14px);
+      }
+      
+      .temperature {
+        @include flex-center;
+        justify-content: flex-start;
+        flex: 1;
+        color: $color-subtext;
+        
+        img {
+          width: rem(40px);
+        }
+      }
+      
+      .weather {
+        font-weight: bold;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,59 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+@use '../abstracts/functions' as *;
+.main {
+  &__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+  }
+  
+  &__header {
+    background-color: white;
+    
+    &--inner {
+      margin: auto;
+      max-width: rem(350px);
+      @include flex-between;
+    }
+    
+    &--location {
+      @include flex-center;
+      gap: rem(10px);
+      
+      &-name {
+        font-size: rem(20px);
+        font-weight: bold;
+      }
+    }
+  }
+  
+  &__body {
+    max-width: rem(350px);
+    margin: auto;
+    padding: rem(32px) 0;
+  }
+}
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  p {
+    font-weight: bold;
+    font-size: rem(24px);
+  }
+  
+  button {
+    border: 1px solid black;
+    padding: rem(16px);
+    border-radius: rem(8px);
+  }
+}
