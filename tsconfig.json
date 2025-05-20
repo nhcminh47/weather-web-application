@@ -1,10 +1,16 @@
 {
   "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "baseUrl": "src",
     "paths": {
       "@assets/*": ["assets/*"],
@@ -14,7 +20,7 @@
       "@pages/*": ["pages/*"],
       "@scss/*": ["scss/*"],
       "@services/*": ["services/*"],
-      "@store/*": ["store/*"],
+      "@store/*": ["store/*"]
     }
   }
 }
