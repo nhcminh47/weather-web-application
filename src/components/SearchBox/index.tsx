@@ -15,6 +15,12 @@ const SearchBox: React.FC = () => {
     if (value === '') return
     trigger({ query: value })
   }
+  const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget
+    if (e.key === 'Enter') {
+      trigger({ query: value })
+    }
+  }
   useEffect(() => {
     if (result && result.data && result.data.length > 0) {
       saveHistory(result.data[0])
@@ -36,6 +42,7 @@ const SearchBox: React.FC = () => {
           type='text'
           placeholder='Search country or city here...'
           ref={inputRef}
+          onKeyUp={handleEnterPress}
         />
         <button className='searchbox__content--btn' onClick={handleSearch}>
           Search
